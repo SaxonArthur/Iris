@@ -1,0 +1,19 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/response.css') }}">
+    <title>Response</title>
+</head>
+<body>
+    <div class="content">
+        <div class="question-content">
+            <p class="question">{{ question }}</p>
+        </div>
+        <div class="answer-content">
+            <p class="answer">{{ response }}</p>
+        </div>
+        <a href="http://127.0.0.1:5000/" class="back">Ask another question</a>>
+    </div>
+</body>
+</html>

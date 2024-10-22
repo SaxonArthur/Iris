@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://kit.fontawesome.com/3c54da3ed6.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/button.css') }}">
+        <title>Iris</title>
+    </head>
+    <body>
+        <div class="btn-content">
+                <button class="mic-btn" id="mic-btn" name="mic-btn"><i class="fa-solid fa-microphone-lines"></i></button>
+                <button class="refresh" id="refresh" name="refresh">Refresh <i class="fa-solid fa-arrows-rotate"></i></button>
+        </div>
+    </body>
+    <script src="{{ url_for('static',filename='js/location.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/button.js') }}"></script>
+</html>

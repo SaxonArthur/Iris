@@ -1,0 +1,174 @@
+/* These settings and adjustments are only correct for my laptop */
+
+html{
+    height:100%;
+    width:100%;
+    margin:0px;
+    padding:0px;
+}
+
+body{
+    background-image: url('..\\media\\neon-circles-hi-tech-dark-background-loop-5k-8k-7680x4320-8312.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.btn-content{
+    height:100%;
+    width:100%;
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -45%);
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.refresh{
+    border:none;
+    padding:5px 10px;
+    border-radius: 20px;
+    background-color: black;
+    color:white;
+    position:relative;
+    transform-style: preserve-3d;
+}
+
+.refresh:hover{
+    animation: pulse 0.2s linear;
+}
+
+.refresh::after{
+    content: '';
+        position:absolute;
+        background-image: linear-gradient(red,blue,purple);
+        border-radius: 10px;
+        width:100%;
+        height:100%;
+        top:50%;
+        left:50%;
+        translate:-50% -50%;
+        transform: translateZ(-1px);
+        padding:3px;
+        filter: blur(1rem);
+    }
+
+
+.mic-btn{
+    margin:40px;
+    border:none;
+    border-radius:50%;
+    height: 400px;
+    width:400px;
+    size:100px;
+    font-size:100px;
+    color:white;
+    position: relative;
+    background-color: black;
+    transform-style: preserve-3d;
+}
+.mic-btn::after{
+content: '';
+    position:absolute;
+    background-image: linear-gradient(red,blue,purple);
+    border-radius: 250px;
+    width:100%;
+    height:100%;
+    top:50%;
+    left:50%;
+    translate:-50% -50%;
+    transform: translateZ(-1px);
+    padding:3px;
+    filter: blur(3rem)
+}
+
+
+.mic-btn-hover-on{
+    animation:pulse 0.2s linear;
+    transform: scale(1.05);
+}
+
+.mic-btn-hover-off{
+    animation: un-pulse 0.2s linear;
+    transform: scale(1);
+}
+
+
+
+.pulse{
+    position:relative;
+    animation:onclick-pulse 4s infinite;
+}
+
+@property --angle{
+    syntax: "<angle>";
+    initial-value:0deg;
+    inherits: false;
+}
+
+.pulse::after{    
+    content: '';
+    position:absolute;
+    background-image: conic-gradient(from var(--angle), rgb(90, 6, 86), rgb(255, 17, 0), rgb(0, 0, 128));
+    border-radius: 250px;
+    width:100%;
+    height:100%;
+    top:50%;
+    left:50%;
+    translate:-50% -50%;
+    transform: translateZ(-1px);
+    animation: 3s spin linear infinite;
+    padding:3px;
+    filter: blur(3rem)
+}
+
+
+@keyframes pulse {
+    
+	0% {
+		transform: scale(1);
+	}
+    50%{
+        transform:scale(1.1);
+    }
+    100% {
+		transform: scale(1.05);
+	}
+}
+
+@keyframes un-pulse{
+    0% {
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(0.9);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+@keyframes onclick-pulse{
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+@keyframes spin{
+    from{
+        --angle: 0deg;
+    }
+    to{
+        --angle:360deg;
+    }
+}
