@@ -3,11 +3,24 @@ import google.generativeai as genai
 from dotenv import load_dotenv
 import os
 import requests
+import subprocess
 
 #Loads environment variables
 load_dotenv()
 
 def tts(file, lat, long, city,message_log):
+  #Define application shortcuts
+  applications={
+    'spotify':os.getenv('spotify'),
+    'microsoft teams':os.getenv('microsoftword'),
+    'onenote':os.getenv('onenote'),
+    'powerpoint':os.getenv('powerpoint'),
+    'microsoft word':os.getenv('microsoftword'),
+    'chrome':os.getenv('chrome'),
+    'excel':os.getenv('excel')
+}
+
+
   model=whisper.load_model('tiny')
   result = model.transcribe(file) #Transcribe audio file
   genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
@@ -20,6 +33,13 @@ def tts(file, lat, long, city,message_log):
   chat=model.start_chat(
     history=history
   )
+
+  for i in applications:
+    if i in result['text'].lower():
+        subprocess.call(applications[i],shell=True)
+        response=i+' successfully opened'
+        os.remove(file)
+        return result['text'], response
 
   #Checking if audio file was empty
   if result['text']=='':
